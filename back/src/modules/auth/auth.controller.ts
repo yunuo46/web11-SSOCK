@@ -31,11 +31,8 @@ export class AuthController {
     description: 'Google 로그인 성공 및 Info 반환',
     type: ResInfoDto
   })
-  @ApiResponse({ status: 401, description: 'Unauthorized' })
-  @ApiResponse({
-    status: 500,
-    description: 'Internal Server Error'
-  })
+  @ApiResponse({ status: 401 })
+  @ApiResponse({ status: 500 })
   async googleLoginCallback(@Req() req): Promise<ResInfoDto> {
     const profile: string = req.user.profile;
     const result = this.authService.createInfo(profile);
@@ -65,11 +62,8 @@ export class AuthController {
     description: 'Naver 로그인 성공 및 Info 반환',
     type: ResInfoDto
   })
-  @ApiResponse({ status: 401, description: 'Unauthorized' })
-  @ApiResponse({
-    status: 500,
-    description: 'Internal Server Error'
-  })
+  @ApiResponse({ status: 401 })
+  @ApiResponse({ status: 500 })
   async naverLoginCallBack(@Req() req): Promise<ResInfoDto> {
     const profile: string = req.user.profile;
     const result = this.authService.createInfo(profile);
@@ -99,11 +93,8 @@ export class AuthController {
     description: 'Kakao 로그인 성공 및 Info 반환',
     type: ResInfoDto
   })
-  @ApiResponse({ status: 401, description: 'Unauthorized' })
-  @ApiResponse({
-    status: 500,
-    description: 'Internal Server Error'
-  })
+  @ApiResponse({ status: 401 })
+  @ApiResponse({ status: 500 })
   async kakaoLoginCallBack(@Req() req): Promise<ResInfoDto> {
     const userInfo = req.user;
     const result = this.authService.createInfo(userInfo);

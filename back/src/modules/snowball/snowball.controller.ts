@@ -37,6 +37,7 @@ export class SnowballController {
     description: '스노우볼 생성 성공',
     type: SnowballDto
   })
+  @ApiResponse({ status: 500 })
   @ApiBody({ type: ReqCreateSnowballDto })
   createSnowball(
     @Body() createSnowballDto: ReqCreateSnowballDto
@@ -52,6 +53,7 @@ export class SnowballController {
     description: '스노우볼 데코레이션 업데이트 성공',
     type: ResUpdateSnowballDecoDto
   })
+  @ApiResponse({ status: 500 })
   @ApiOperation({
     summary: '스노우볼 데코레이션 업데이트 API',
     description: '스노우볼의 데코레이션들을 업데이트 해줍니다.'
@@ -75,6 +77,7 @@ export class SnowballController {
     description: '스노우볼 업데이트 성공',
     type: ResUpdateSnowballDto
   })
+  @ApiResponse({ status: 500 })
   @ApiOperation({
     summary: '스노우볼 설정 업데이트 API',
     description: '스노우볼에의 정보를 업데이트 해줍니다.'
@@ -98,6 +101,7 @@ export class SnowballController {
     description: '스노우볼 조회 성공',
     type: SnowballDto
   })
+  @ApiResponse({ status: 500 })
   @ApiOperation({
     summary: '스노우볼 조회 API',
     description: '스노우볼의 정보를 조회합니다.'

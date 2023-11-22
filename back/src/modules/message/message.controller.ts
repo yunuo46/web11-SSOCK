@@ -31,10 +31,7 @@ export class MessageController {
     description: 'Created',
     type: ResCreateMessageDto
   })
-  @ApiResponse({
-    status: 500,
-    description: 'Insert Fail'
-  })
+  @ApiResponse({ status: 500 })
   async createMessage(
     @Param('snowball_id') snowball_id: number,
     @Body() createMessageDto: ReqCreateMessageDto
@@ -53,10 +50,7 @@ export class MessageController {
     description: '스노우볼에서 특정 메세지를 삭제합니다.'
   })
   @ApiResponse({ status: 204, description: 'No Content' })
-  @ApiResponse({
-    status: 500,
-    description: 'Delete Fail'
-  })
+  @ApiResponse({ status: 500 })
   async deleteMessage(@Param() deleteMessageDto: ReqDeleteMessageDto) {
     await this.messageService.deleteMessage(deleteMessageDto);
   }
@@ -65,16 +59,14 @@ export class MessageController {
   @HttpCode(200)
   @ApiOperation({
     summary: '메세지 조회 API',
-    description: '모든 메세지를 조회합니다'
+    description:
+      '모든 메세지를 조회합니다(jwt 구현 후 user_id 파라미터로 받지 않음)'
   })
   @ApiResponse({
     status: 200,
     type: MessageDto
   })
-  @ApiResponse({
-    status: 500,
-    description: 'Find Fail'
-  })
+  @ApiResponse({ status: 500 })
   async getAllMessages(
     @Param('user_id') user_id: number
   ): Promise<MessageDto[]> {
