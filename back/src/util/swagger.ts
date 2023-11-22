@@ -17,16 +17,6 @@ export function setupSwagger(app: INestApplication): void {
     .setDescription('The SSOCK API description')
     .setVersion('1.0')
     .addTag('ssock')
-    .addBearerAuth(
-      {
-        type: 'http',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
-        name: 'JWT',
-        in: 'header'
-      },
-      'token'
-    )
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document, {

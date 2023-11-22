@@ -37,8 +37,8 @@ export class AuthController {
     description: 'Internal Server Error'
   })
   async googleLoginCallback(@Req() req): Promise<ResInfoDto> {
-    const profile: string = req.user.profile;
-    const result = this.authService.createInfo(profile);
+    const userInfo = req.user;
+    const result = this.authService.createInfo(userInfo);
     return result;
   }
 
@@ -56,7 +56,7 @@ export class AuthController {
     description: `'https://mysnowball.kr/auth/naver/failure'로 GET요청을 보냅니다.`
   })
   @UseGuards(AuthGuard('naver'))
-  async naverLogin(): Promise<void> {}
+  naverLogin(): void {}
 
   @Get('naver/redirect')
   @UseGuards(AuthGuard('naver'))
@@ -71,8 +71,8 @@ export class AuthController {
     description: 'Internal Server Error'
   })
   async naverLoginCallBack(@Req() req): Promise<ResInfoDto> {
-    const profile: string = req.user.profile;
-    const result = this.authService.createInfo(profile);
+    const userInfo = req.user;
+    const result = this.authService.createInfo(userInfo);
     return result;
   }
 

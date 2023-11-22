@@ -4,14 +4,19 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   ManyToOne,
-  JoinColumn
+  JoinColumn,
+  Index
 } from 'typeorm';
 import { SnowballEntity } from 'src/modules/snowball/entity/snowball.entity';
 
 @Entity({ synchronize: true, name: 'message' })
+@Index('idx_message', ['user_id'], { unique: true })
 export class MessageEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  user_id: number;
 
   @Column()
   snowball_id: number;
