@@ -26,7 +26,7 @@ export class SnowballService {
     const snowball = this.snowballRepository.create({
       user_id: createSnowballDto.user_id,
       title: createSnowballDto.title,
-      message_private: createSnowballDto.message_private ? new Date() : null
+      message_private: createSnowballDto.is_message_private ? new Date() : null
     });
     const savedSnowball = await this.snowballRepository.save(snowball);
 
@@ -91,14 +91,14 @@ export class SnowballService {
     updateSnowballDto: ReqUpdateSnowballDto,
     snowball_id: number
   ): Promise<ResUpdateSnowballDto> {
-    const { title, message_private } = updateSnowballDto;
+    const { title, is_message_private } = updateSnowballDto;
 
     const updateResult = await this.snowballRepository
       .createQueryBuilder()
       .update(SnowballEntity)
       .set({
         title,
-        message_private: message_private ? new Date() : null
+        message_private: is_message_private ? new Date() : null
       })
       .where('id = :id', { id: snowball_id })
       .execute();
@@ -111,7 +111,7 @@ export class SnowballService {
     const resUpdateSnowballDto: ResUpdateSnowballDto = {
       snowball_id,
       title,
-      message_private
+      is_message_private
     };
 
     return resUpdateSnowballDto;
