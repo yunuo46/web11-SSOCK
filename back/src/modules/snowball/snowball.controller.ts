@@ -48,6 +48,7 @@ export class SnowballController {
     @Req() req: any,
     @Body() createSnowballDto: ReqCreateSnowballDto
   ): Promise<SnowballDto> {
+    console.log(req.user);
     const snowball = this.snowballService.createSnowball(
       req.user,
       createSnowballDto

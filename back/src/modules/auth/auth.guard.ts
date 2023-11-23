@@ -23,7 +23,7 @@ export class JWTGuard implements CanActivate {
         secret: process.env.JWT_SECRET
       });
       // route 핸들러에서 request.user로 사용할 수 있도록 넣어줌
-      request['user'] = payload;
+      request['user'] = payload.userid; // 이거 oauth2.0 아이디라 pk로 바꿔야함
     } catch {
       throw new UnauthorizedException();
     }
